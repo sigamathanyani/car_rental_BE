@@ -14,6 +14,14 @@ export const authenticatedUser = (req,res,next)=>{
     }
 }
 
+export const user = (req,res,next)=>{
+    authenticatedUser(req,res,next);
+
+    if(req.user){
+        
+    }
+}
+
 export const admin = (req, res,next)=>{
 
 }

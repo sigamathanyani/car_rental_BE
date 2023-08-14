@@ -5,6 +5,6 @@ import { allCars, createCar } from "../controllers/carController.js";
 const router = express.Router();
 
 router.get("/",authenticatedUser,allCars);
-router.post("/create-car",createCar);
+router.post("/create-car",authenticatedUser,createCar);
 
 export default router;
