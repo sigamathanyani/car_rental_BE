@@ -12,13 +12,13 @@ export const register = async (req,res)=>{
 
     data.query(user_query,[email],(err, user)=>{
         if(err) return res.json(err);
-        if(user.length>0) return res.json({"msg":"User already exist"});
+        if(user.length>0) return res.json({"msg":"User already exist","status":false});
 
         const add_query = "INSERT INTO USER (username, email, password) VALUES (?, ?, ?)"
 
         data.query(add_query,[username, email,hashedPass],(err,data)=>{
             if(err) return res.json(err);
-            return res.json({"message":"User has been created"});
+            return res.json({"message":"User has been created","status":true});
         });
     });
 

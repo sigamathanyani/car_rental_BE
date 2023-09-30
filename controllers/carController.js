@@ -24,7 +24,7 @@ export const createCar = (req,res)=> {
         model, year_of_make, max_speed, gasoline, 
         transmission, type_of_car, location, price],
         (err,car)=>{
-            if(err) res.send(err);
+            if(err) res.send("Sorry something went wrong!");
             else res.send("Car Created");
         })
 }
