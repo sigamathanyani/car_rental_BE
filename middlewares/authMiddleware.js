@@ -8,7 +8,6 @@ export const authenticatedUser = (req,res,next)=>{
     try {
        const user = jwt.verify(header_token,process.env.SECRET_KEY);
         req.user = user;
-        console.log("Auth");
         next();
     } catch (error) {
         return res.json({"msg2":error.message});
