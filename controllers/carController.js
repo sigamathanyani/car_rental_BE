@@ -3,7 +3,52 @@ import { data } from "../database/db.js";
 export const allCars = (req,res)=>{
 
     //Getting all the Cars
-    const cars = "SELECT * FROM car"
+//     SELECT *
+// FROM car
+// LEFT JOIN review ON car.car_id = review.car_id
+// WHERE car.car_id = 9;
+    // const cars = "SELECT * FROM car LEFT JOIN review ON car.car_id = review.car_id";
+
+
+//     SELECT
+//     c.car_id,
+//     c.year_of_make,
+//     c.model,
+//     COUNT(cr.review_id) as review_count
+// FROM
+//     car c
+// LEFT JOIN
+//     review cr ON c.car_id = cr.car_id
+// GROUP BY
+//     c.car_id, c.year_of_make, c.model
+    // const cars = "SELECT c.car_id, FROM car"
+
+    const cars = `
+    SELECT
+        c.car_name,
+        c.model,
+        c.year_of_make,
+        c.max_speed,
+        c.gasoline,
+        c.transmission,
+        c.type_of_car,
+        c.location,
+        c.price,
+        c.seats,
+        COUNT(cr.review_id) AS review_count,
+        AVG(cr.rating) as rate
+    FROM
+        car c
+    LEFT JOIN
+        review cr
+    ON
+        c.car_id = cr.car_id
+    GROUP BY
+        c.car_id
+`;
+
+// You can use sqlQuery in your JavaScript code as needed.
+
     data.query(cars,(err,data)=>{
         if(err) res.send(err);
         else res.send(data);
