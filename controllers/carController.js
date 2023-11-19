@@ -25,6 +25,7 @@ export const allCars = (req,res)=>{
 
     const cars = `
     SELECT
+        c.car_id,
         c.car_name,
         c.model,
         c.year_of_make,
@@ -47,7 +48,6 @@ export const allCars = (req,res)=>{
         c.car_id
 `;
 
-// You can use sqlQuery in your JavaScript code as needed.
 
     data.query(cars,(err,data)=>{
         if(err) res.send(err);

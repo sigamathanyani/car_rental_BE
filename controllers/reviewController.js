@@ -4,7 +4,22 @@ export const getRevs = (req,res)=>{
 
     const {carID} = req.params;
 
-    const all_revs = "SELECT * FROM review WHERE car_id = ?";
+    const all_revs = `
+    SELECT
+    car.car_id,
+	car.car_name,
+    car.price,
+    review.coment,
+    user.username,
+    COUNT(review.review_id) AS review_count,
+    AVG(review.rating) AS rate
+    FROM car
+    LEFT JOIN review ON review.car_id = car.car_id
+    LEFT JOIN user ON user.user_id = review.reviewer_id
+    WHERE car.car_id = ?
+    GROUP BY car.car_id, review.review_id
+    `;
+    // const all_revs = "SELECT * FROM review WHERE car_id = ?";
     data.query(all_revs,[carID],(err,revs)=>{
         if(err) res.send(err);
         else res.send(revs);
