@@ -19,7 +19,7 @@ export const getRevs = (req,res)=>{
     WHERE car.car_id = ?
     GROUP BY car.car_id, review.review_id
     `;
-    // const all_revs = "SELECT * FROM review WHERE car_id = ?";
+
     data.query(all_revs,[carID],(err,revs)=>{
         if(err) res.send(err);
         else res.send(revs);
