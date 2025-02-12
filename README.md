@@ -43,3 +43,58 @@ Node.js
 MySQL
 
 Git
+
+## Steps to Set Up
+
+# Clone the repository:
+
+git clone https://github.com/yourusername/car-rental-api.git
+cd car-rental-api
+
+# Install dependencies:
+
+npm install
+
+# Set up environment variables:
+
+Create a .env file in the project root
+
+# Add database credentials, API keys, and secret keys:
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=password
+DB_NAME=car_rental
+JWT_SECRET=your_secret_key
+
+# Set up the database:
+
+npx sequelize db:migrate
+
+# Start the application:
+
+npm start
+
+# API will be available at:
+
+http://localhost:3000
+
+# How to Run the Backend
+
+Ensure MySQL is running and properly configured with the credentials specified in .env.
+
+# Navigate to the project directory:
+
+cd car-rental-api
+
+# Install dependencies (if not already installed):
+
+npm install
+
+# Run database migrations:
+
+npx sequelize db:migrate
+
+# Start the backend server:
+
+npm start
